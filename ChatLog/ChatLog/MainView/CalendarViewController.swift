@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol CalendarViewControllerDelegate: class {
+  func provideChatsForDate(date: NSDate) -> [Chat]
+}
+
 class CalendarViewController: UIViewController {
+  
+  weak var delegate: CalendarViewControllerDelegate?
   
   private lazy var dateStackView: UIStackView = {
     let stackView = UIStackView(frame: CGRectZero)
@@ -30,7 +36,7 @@ class CalendarViewController: UIViewController {
     self.dateStackView.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor).active = true
     self.dateStackView.bottomAnchor.constraintEqualToAnchor(self.view.bottomAnchor).active = true
     
-    for x in 1...7 {
+    for x in 0..<7 {
       let view = UIView()
       view.translatesAutoresizingMaskIntoConstraints = false
       if x == 1 {
@@ -41,8 +47,17 @@ class CalendarViewController: UIViewController {
       
       let label = UILabel()
       label.translatesAutoresizingMaskIntoConstraints = false
-      label.text = "\(x)"
       view.addSubview(label)
+      
+      // construct the date
+      let components: NSDateComponents = NSDateComponents()
+      components.setValue(x, forComponent: NSCalendarUnit.Day);
+      let date: NSDate = NSDate()
+      let expirationDate = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: date, options: NSCalendarOptions(rawValue: 0))
+      
+      if let date = expirationDate, let chats = self.delegate?.provideChatsForDate(date) {
+        label.text = "\(chats.count)"
+      }
       
       label.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
       label.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true

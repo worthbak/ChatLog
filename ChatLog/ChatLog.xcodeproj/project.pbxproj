@@ -17,6 +17,8 @@
 		38FDDFA31C888F1900BB3187 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDFA21C888F1900BB3187 /* ChatTableViewController.swift */; };
 		38FDDFA61C88915F00BB3187 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDFA51C88915F00BB3187 /* PlusButton.swift */; };
 		38FDDFA81C8896E500BB3187 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDFA71C8896E500BB3187 /* AppColors.swift */; };
+		38FDDFAB1C889ECA00BB3187 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDFAA1C889ECA00BB3187 /* Chat.swift */; };
+		38FDDFAD1C889FE000BB3187 /* ChatDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDFAC1C889FE000BB3187 /* ChatDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		38FDDFA21C888F1900BB3187 /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatTableViewController.swift; path = MainView/ChatTableViewController.swift; sourceTree = "<group>"; };
 		38FDDFA51C88915F00BB3187 /* PlusButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlusButton.swift; path = MainView/PlusButton.swift; sourceTree = "<group>"; };
 		38FDDFA71C8896E500BB3187 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		38FDDFAA1C889ECA00BB3187 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		38FDDFAC1C889FE000BB3187 /* ChatDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +70,9 @@
 			children = (
 				38FDDF851C88899D00BB3187 /* AppDelegate.swift */,
 				38FDDF971C888A0600BB3187 /* AppCoordinator.swift */,
+				38FDDFAC1C889FE000BB3187 /* ChatDataController.swift */,
 				38FDDF9F1C888C7700BB3187 /* MainView */,
-				38FDDFA91C8897A700BB3187 /* Utils */,
+				38FDDFA91C8897A700BB3187 /* Data/Utils */,
 				38FDDF8C1C88899D00BB3187 /* Assets.xcassets */,
 				38FDDF8E1C88899D00BB3187 /* LaunchScreen.storyboard */,
 				38FDDF911C88899D00BB3187 /* Info.plist */,
@@ -95,12 +100,13 @@
 			name = SubViews;
 			sourceTree = "<group>";
 		};
-		38FDDFA91C8897A700BB3187 /* Utils */ = {
+		38FDDFA91C8897A700BB3187 /* Data/Utils */ = {
 			isa = PBXGroup;
 			children = (
 				38FDDFA71C8896E500BB3187 /* AppColors.swift */,
+				38FDDFAA1C889ECA00BB3187 /* Chat.swift */,
 			);
-			name = Utils;
+			name = Data/Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,9 +180,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				38FDDFA11C888CFC00BB3187 /* CalendarViewController.swift in Sources */,
+				38FDDFAD1C889FE000BB3187 /* ChatDataController.swift in Sources */,
 				38FDDF981C888A0600BB3187 /* AppCoordinator.swift in Sources */,
 				38FDDF9C1C888BA400BB3187 /* MainViewCoordinator.swift in Sources */,
 				38FDDF861C88899D00BB3187 /* AppDelegate.swift in Sources */,
+				38FDDFAB1C889ECA00BB3187 /* Chat.swift in Sources */,
 				38FDDFA61C88915F00BB3187 /* PlusButton.swift in Sources */,
 				38FDDFA81C8896E500BB3187 /* AppColors.swift in Sources */,
 				38FDDF9E1C888C7400BB3187 /* MainViewController.swift in Sources */,
@@ -320,6 +328,7 @@
 				38FDDF961C88899D00BB3187 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

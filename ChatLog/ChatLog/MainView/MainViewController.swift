@@ -12,10 +12,17 @@ import UIKit
 let CalendarViewHeight: CGFloat = 80
 let PlusButtonDimension: CGFloat = 60
 
+protocol MainViewControllerDelegate: class {
+  func provideChatsForDate(date: NSDate) -> [Chat]
+}
+
 class MainViewController: UIViewController {
+  
+  weak var delegate: MainViewControllerDelegate?
   
   private lazy var calendarViewController: CalendarViewController = {
     let dateVC = CalendarViewController()
+    dateVC.delegate = self
     dateVC.view.translatesAutoresizingMaskIntoConstraints = false
     self.addChildViewController(dateVC)
     self.view.addSubview(dateVC.view)
@@ -62,6 +69,16 @@ class MainViewController: UIViewController {
     MainViewController.createConstraintsForPlusButton(self.plusButton, withParentViewController: self)
   }
   
+}
+
+extension MainViewController: CalendarViewControllerDelegate {
+  func provideChatsForDate(date: NSDate) -> [Chat] {
+    if let chats = self.delegate?.provideChatsForDate(date) {
+      return chats
+    } else {
+      fatalError("there is no delegate for the main view controller; this is not allowed")
+    }
+  }
 }
 
 // Static, standalone functions for adding view constraints
