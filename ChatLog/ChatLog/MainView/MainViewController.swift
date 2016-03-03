@@ -9,8 +9,8 @@
 import UIKit
 
 // Constants
-let CalendarViewHeight: CGFloat = 80
-let PlusButtonDimension: CGFloat = 60
+private let CalendarViewHeight: CGFloat = 80
+private let PlusButtonDimension: CGFloat = 60
 
 protocol MainViewControllerDelegate: class {
   func provideChatsForDate(date: NSDate) -> [Chat]
@@ -91,7 +91,6 @@ extension MainViewController: CalendarViewControllerDelegate {
 
 // Static, standalone functions for adding view constraints
 extension MainViewController {
-  
   static func createConstraintsForCalendarViewController(calendarVC: CalendarViewController, withParentViewController parentVC: UIViewController, withCalendarHeight height: CGFloat = CalendarViewHeight) {
     calendarVC.view.topAnchor.constraintEqualToAnchor(parentVC.topLayoutGuide.bottomAnchor).active = true
     calendarVC.view.leadingAnchor.constraintEqualToAnchor(parentVC.view.leadingAnchor).active = true

@@ -35,7 +35,8 @@ extension MainViewCoordinator: MainViewControllerDelegate {
   }
   
   func newChatButtonTapped() {
-    let newChatVC = NewChatViewController()
+    
+    let newChatVC = NewChatViewController(nibName: "NewChatViewController", bundle: nil)
     newChatVC.delegate = self
     self.navigationController.presentViewController(newChatVC, animated: true, completion: nil)
   }

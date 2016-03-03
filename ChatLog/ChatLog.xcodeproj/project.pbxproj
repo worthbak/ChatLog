@@ -20,6 +20,7 @@
 		38FDDFAB1C889ECA00BB3187 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDFAA1C889ECA00BB3187 /* Chat.swift */; };
 		38FDDFAD1C889FE000BB3187 /* ChatDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDFAC1C889FE000BB3187 /* ChatDataController.swift */; };
 		38FDDFAF1C88A8A600BB3187 /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDFAE1C88A8A600BB3187 /* NewChatViewController.swift */; };
+		38FDDFB11C88B21300BB3187 /* NewChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38FDDFB01C88B21300BB3187 /* NewChatViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		38FDDFAA1C889ECA00BB3187 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		38FDDFAC1C889FE000BB3187 /* ChatDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDataController.swift; sourceTree = "<group>"; };
 		38FDDFAE1C88A8A600BB3187 /* NewChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewChatViewController.swift; path = MainView/NewChatViewController.swift; sourceTree = "<group>"; };
+		38FDDFB01C88B21300BB3187 /* NewChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewChatViewController.xib; path = MainView/NewChatViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +89,7 @@
 			children = (
 				38FDDF9B1C888BA400BB3187 /* MainViewCoordinator.swift */,
 				38FDDF9D1C888C7400BB3187 /* MainViewController.swift */,
-				38FDDFAE1C88A8A600BB3187 /* NewChatViewController.swift */,
+				38FDDFB21C88B31500BB3187 /* NewChatViewController */,
 				38FDDFA41C88912200BB3187 /* SubViews */,
 			);
 			name = MainView;
@@ -110,6 +112,15 @@
 				38FDDFAA1C889ECA00BB3187 /* Chat.swift */,
 			);
 			name = Data/Utils;
+			sourceTree = "<group>";
+		};
+		38FDDFB21C88B31500BB3187 /* NewChatViewController */ = {
+			isa = PBXGroup;
+			children = (
+				38FDDFAE1C88A8A600BB3187 /* NewChatViewController.swift */,
+				38FDDFB01C88B21300BB3187 /* NewChatViewController.xib */,
+			);
+			name = NewChatViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +181,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38FDDFB11C88B21300BB3187 /* NewChatViewController.xib in Resources */,
 				38FDDF901C88899D00BB3187 /* LaunchScreen.storyboard in Resources */,
 				38FDDF8D1C88899D00BB3187 /* Assets.xcassets in Resources */,
 			);

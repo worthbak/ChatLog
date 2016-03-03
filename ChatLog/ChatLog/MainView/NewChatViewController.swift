@@ -16,27 +16,33 @@ protocol NewChatViewControllerDelegate: class {
 class NewChatViewController: UIViewController {
   
   weak var delegate: NewChatViewControllerDelegate?
+  @IBOutlet weak var titleTextField: UITextField!
+  @IBOutlet weak var datePicker: UIDatePicker!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = .redColor()
+    self.view.backgroundColor = .whiteColor()
     
-    let button = UIButton(type: .System)
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle("done", forState: .Normal)
-    self.view.addSubview(button)
-    button.centerXAnchor.constraintEqualToAnchor(self.view.centerXAnchor).active = true
-    button.centerYAnchor.constraintEqualToAnchor(self.view.centerYAnchor).active = true
-    
-    button.addTarget(self, action: "doneTapped:", forControlEvents: .TouchUpInside)
   }
   
-  func doneTapped(sender: AnyObject) {
+  override func viewDidAppear(animated: Bool) {
 //    self.delegate?.cancelTapped()
-    let newChat = Chat(withTitle: "fart")
+  }
+  
+  @IBAction func doneTapped(sender: AnyObject) {
+//    self.delegate?.cancelTapped()
+    let newChat = Chat(withTitle: self.titleTextField.text ?? "New Chat", withDate: self.datePicker.date)
+
     self.delegate?.newChatCreated(newChat)
   }
   
+}
+
+extension NewChatViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
+  }
 }
