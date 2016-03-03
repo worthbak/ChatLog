@@ -19,6 +19,7 @@
 		38FDDFA81C8896E500BB3187 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDFA71C8896E500BB3187 /* AppColors.swift */; };
 		38FDDFAB1C889ECA00BB3187 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDFAA1C889ECA00BB3187 /* Chat.swift */; };
 		38FDDFAD1C889FE000BB3187 /* ChatDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDFAC1C889FE000BB3187 /* ChatDataController.swift */; };
+		38FDDFAF1C88A8A600BB3187 /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDFAE1C88A8A600BB3187 /* NewChatViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		38FDDFA71C8896E500BB3187 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		38FDDFAA1C889ECA00BB3187 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		38FDDFAC1C889FE000BB3187 /* ChatDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatDataController.swift; sourceTree = "<group>"; };
+		38FDDFAE1C88A8A600BB3187 /* NewChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewChatViewController.swift; path = MainView/NewChatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			children = (
 				38FDDF9B1C888BA400BB3187 /* MainViewCoordinator.swift */,
 				38FDDF9D1C888C7400BB3187 /* MainViewController.swift */,
+				38FDDFAE1C88A8A600BB3187 /* NewChatViewController.swift */,
 				38FDDFA41C88912200BB3187 /* SubViews */,
 			);
 			name = MainView;
@@ -179,6 +182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38FDDFAF1C88A8A600BB3187 /* NewChatViewController.swift in Sources */,
 				38FDDFA11C888CFC00BB3187 /* CalendarViewController.swift in Sources */,
 				38FDDFAD1C889FE000BB3187 /* ChatDataController.swift in Sources */,
 				38FDDF981C888A0600BB3187 /* AppCoordinator.swift in Sources */,

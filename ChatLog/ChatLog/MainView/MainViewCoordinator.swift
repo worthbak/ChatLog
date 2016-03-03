@@ -33,4 +33,25 @@ extension MainViewCoordinator: MainViewControllerDelegate {
   func provideChatsForDate(date: NSDate) -> [Chat] {
     return self.chatDataController.provideChatsForDate(date)
   }
+  
+  func newChatButtonTapped() {
+    let newChatVC = NewChatViewController()
+    newChatVC.delegate = self
+    self.navigationController.presentViewController(newChatVC, animated: true, completion: nil)
+  }
+}
+
+extension MainViewCoordinator: NewChatViewControllerDelegate {
+  func newChatCreated(chat: Chat) {
+    self.navigationController.dismissViewControllerAnimated(true, completion: nil)
+    self.chatDataController.addNewChat(chat)
+    if let mainVC = navigationController.viewControllers.last as? MainViewController {
+      mainVC.reloadChatData()
+    }
+    
+  }
+  
+  func cancelTapped() {
+    self.navigationController.dismissViewControllerAnimated(true, completion: nil)
+  }
 }

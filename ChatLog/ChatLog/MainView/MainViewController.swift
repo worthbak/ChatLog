@@ -14,6 +14,7 @@ let PlusButtonDimension: CGFloat = 60
 
 protocol MainViewControllerDelegate: class {
   func provideChatsForDate(date: NSDate) -> [Chat]
+  func newChatButtonTapped()
 }
 
 class MainViewController: UIViewController {
@@ -46,6 +47,8 @@ class MainViewController: UIViewController {
     button.translatesAutoresizingMaskIntoConstraints = false
     self.view.addSubview(button)
     
+    button.tapActionClosure = { [weak self] _ in self?.delegate?.newChatButtonTapped() }
+    
     return button
   }()
   
@@ -67,6 +70,11 @@ class MainViewController: UIViewController {
     
     // add the plus button constraints
     MainViewController.createConstraintsForPlusButton(self.plusButton, withParentViewController: self)
+  }
+  
+  func reloadChatData() {
+    self.calendarViewController.constructDates()
+    self.chatTableViewController.tableView.reloadData()
   }
   
 }

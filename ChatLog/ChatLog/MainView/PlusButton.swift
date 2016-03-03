@@ -12,6 +12,8 @@ class PlusButton: UIButton {
   
   var fillColor: UIColor = CLPink
   
+  var tapActionClosure: ((UITapGestureRecognizer) -> Void)?
+  
   override func drawRect(rect: CGRect) {
     // make the circile
     let path = UIBezierPath(ovalInRect: rect)
@@ -57,6 +59,13 @@ class PlusButton: UIButton {
   override func willMoveToSuperview(newSuperview: UIView?) {
     // get more sophisticated with this
     self.showsTouchWhenHighlighted = true
+    
+    // add a gesture recognizer
+    self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "tapRecognized:"))
+  }
+  
+  func tapRecognized(sender: UITapGestureRecognizer) {
+    self.tapActionClosure?(sender)
   }
   
 }

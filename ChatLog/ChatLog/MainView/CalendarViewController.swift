@@ -36,6 +36,14 @@ class CalendarViewController: UIViewController {
     self.dateStackView.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor).active = true
     self.dateStackView.bottomAnchor.constraintEqualToAnchor(self.view.bottomAnchor).active = true
     
+    self.constructDates()
+  }
+  
+  func constructDates() {
+    for view in self.dateStackView.arrangedSubviews {
+      self.dateStackView.removeArrangedSubview(view)
+    }
+    
     for x in 0..<7 {
       let view = UIView()
       view.translatesAutoresizingMaskIntoConstraints = false
