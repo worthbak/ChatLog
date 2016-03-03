@@ -8,19 +8,21 @@
 
 import UIKit
 
-// Constants
+// MARK: - Constants / Protocols
 private let CalendarViewHeight: CGFloat = 80
 private let PlusButtonDimension: CGFloat = 60
 
 protocol MainViewControllerDelegate: class {
   func provideChatsForDate(date: NSDate) -> [Chat]
-  func newChatButtonTapped()
+  func newChatButtonTappedWithDate(date: NSDate)
 }
 
+// MARK: - MainViewController
 class MainViewController: UIViewController {
   
   weak var delegate: MainViewControllerDelegate?
   
+  // MARK: Lazy-loaded UI Elements
   private lazy var calendarViewController: CalendarViewController = {
     let dateVC = CalendarViewController()
     dateVC.delegate = self
@@ -47,11 +49,12 @@ class MainViewController: UIViewController {
     button.translatesAutoresizingMaskIntoConstraints = false
     self.view.addSubview(button)
     
-    button.tapActionClosure = { [weak self] _ in self?.delegate?.newChatButtonTapped() }
+    button.tapActionClosure = { [unowned self] _ in self.delegate?.newChatButtonTappedWithDate(self.calendarViewController.selectedDate) }
     
     return button
   }()
   
+  // MARK: View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigationItem.title = "ChatLog"
@@ -75,6 +78,7 @@ class MainViewController: UIViewController {
     self.reloadChatData()
   }
   
+  /// Reloads/resets the data in both the calendar view and chat table view.
   func reloadChatData() {
     self.calendarViewController.constructDates()
     
@@ -85,6 +89,7 @@ class MainViewController: UIViewController {
   
 }
 
+// MARK: - CalendarViewControllerDelegate
 extension MainViewController: CalendarViewControllerDelegate {
   func provideChatsForDate(date: NSDate) -> [Chat] {
     if let chats = self.delegate?.provideChatsForDate(date) {
@@ -99,6 +104,7 @@ extension MainViewController: CalendarViewControllerDelegate {
   }
 }
 
+// MARK: - Layout Generation
 // Static, standalone functions for adding view constraints
 extension MainViewController {
   static func createConstraintsForCalendarViewController(calendarVC: CalendarViewController, withParentViewController parentVC: UIViewController, withCalendarHeight height: CGFloat = CalendarViewHeight) {

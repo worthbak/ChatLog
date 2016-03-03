@@ -51,12 +51,9 @@ class CalendarViewController: UIViewController {
       view.translatesAutoresizingMaskIntoConstraints = false
       
       // construct the date
-      let components: NSDateComponents = NSDateComponents()
-      components.setValue(x, forComponent: NSCalendarUnit.Day);
-      let date: NSDate = NSDate()
-      let expirationDate = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: date, options: NSCalendarOptions(rawValue: 0))
+      let currentDate = self.constructDateWithOffsetFromCurrentDate(x)
       
-      if NSCalendar.currentCalendar().isDate(expirationDate!, inSameDayAsDate: self.selectedDate) {
+      if NSCalendar.currentCalendar().isDate(currentDate, inSameDayAsDate: self.selectedDate) {
         view.backgroundColor = CLLightBlue
       } else {
         view.backgroundColor = CLWhite
@@ -66,7 +63,7 @@ class CalendarViewController: UIViewController {
       label.translatesAutoresizingMaskIntoConstraints = false
       view.addSubview(label)
       
-      if let date = expirationDate, let chats = self.delegate?.provideChatsForDate(date) {
+      if let chats = self.delegate?.provideChatsForDate(currentDate) {
         label.text = "\(chats.count)"
       }
       
@@ -83,12 +80,20 @@ class CalendarViewController: UIViewController {
     
     // construct the date
     let offset = tappedView.tag
+    self.selectedDate = self.constructDateWithOffsetFromCurrentDate(offset)
+    
+    self.delegate?.dateTapped(self.selectedDate)
+  }
+  
+  private func constructDateWithOffsetFromCurrentDate(offset: Int) -> NSDate {
     let components: NSDateComponents = NSDateComponents()
     components.setValue(offset, forComponent: NSCalendarUnit.Day);
     let date: NSDate = NSDate()
-    self.selectedDate = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: date, options: NSCalendarOptions(rawValue: 0)) ?? NSDate()
-    
-    self.delegate?.dateTapped(self.selectedDate)
+    if let expirationDate = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: date, options: NSCalendarOptions(rawValue: 0)) {
+      return expirationDate
+    } else {
+      fatalError("failed to construct date for comparison")
+    }
   }
   
 }

@@ -11,17 +11,16 @@ import UIKit
 class MainViewCoordinator: NSObject, Coordinator {
   
   let navigationController: UINavigationController
-  lazy var chatDataController: ChatDataController = ChatDataController() // can be injected for testing
+  
+  /// This variable can be set externally (for testing or customization); it is
+  /// advised that you set it before calling `start()`.
+  lazy var chatDataController: ChatDataController = ChatDataController()
   
   required init(withNavigationController navigationController: UINavigationController) {
     self.navigationController = navigationController
   }
   
   func start() {
-    // add test chat
-    let testChat = Chat(withTitle: "hello!")
-    self.chatDataController.addNewChat(testChat)
-    
     let viewController = MainViewController()
     viewController.delegate = self
     self.navigationController.pushViewController(viewController, animated: false)
@@ -29,19 +28,24 @@ class MainViewCoordinator: NSObject, Coordinator {
   
 }
 
+// MARK: - Compatibility Extensions
+
+// MARK: MainViewControllerDelegate
 extension MainViewCoordinator: MainViewControllerDelegate {
   func provideChatsForDate(date: NSDate) -> [Chat] {
     return self.chatDataController.provideChatsForDate(date)
   }
   
-  func newChatButtonTapped() {
-    
+  func newChatButtonTappedWithDate(date: NSDate) {
     let newChatVC = NewChatViewController(nibName: "NewChatViewController", bundle: nil)
     newChatVC.delegate = self
-    self.navigationController.presentViewController(newChatVC, animated: true, completion: nil)
+    self.navigationController.presentViewController(newChatVC, animated: true) {
+      newChatVC.datePicker.setDate(date, animated: true)
+    }
   }
 }
 
+// MARK: NewChatViewControllerDelegate
 extension MainViewCoordinator: NewChatViewControllerDelegate {
   func newChatCreated(chat: Chat) {
     self.navigationController.dismissViewControllerAnimated(true, completion: nil)
