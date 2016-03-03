@@ -9,6 +9,7 @@
 import UIKit
 
 let CalendarViewHeight: CGFloat = 80
+let PlusButtonDimension: CGFloat = 60
 
 class MainViewController: UIViewController {
   
@@ -32,15 +33,23 @@ class MainViewController: UIViewController {
     return chatVC
   }()
   
+  private lazy var plusButton: PlusButton = {
+    let button = PlusButton(type: .System)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    self.view.addSubview(button)
+    
+    return button
+  }()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = .orangeColor()
     
     // add constraints for the child view controllers
     MainViewController.createConstraintsForCalendarViewController(self.calendarViewController, withParentViewController: self)
     MainViewController.createConstraintsForChatTableViewController(self.chatTableViewController, withParentViewController: self, withTopAnchor: self.calendarViewController.bottomLayoutGuide.bottomAnchor)
+    
+    // add the plus button constraints
+    MainViewController.createConstraintsForPlusButton(self.plusButton, withParentViewController: self)
   }
   
 }
@@ -60,5 +69,12 @@ extension MainViewController {
     chatVC.view.leadingAnchor.constraintEqualToAnchor(parentVC.view.leadingAnchor).active = true
     chatVC.view.trailingAnchor.constraintEqualToAnchor(parentVC.view.trailingAnchor).active = true
     chatVC.view.bottomAnchor.constraintEqualToAnchor(parentVC.bottomLayoutGuide.bottomAnchor).active = true
+  }
+  
+  static func createConstraintsForPlusButton(plusButton: PlusButton, withParentViewController parentVC: UIViewController, withButtonDimension dimension: CGFloat = PlusButtonDimension) {
+    plusButton.heightAnchor.constraintEqualToConstant(dimension).active = true
+    plusButton.widthAnchor.constraintEqualToConstant(dimension).active = true
+    plusButton.centerXAnchor.constraintEqualToAnchor(parentVC.view.centerXAnchor).active = true
+    plusButton.bottomAnchor.constraintEqualToAnchor(parentVC.bottomLayoutGuide.bottomAnchor, constant: -8.0).active = true
   }
 }

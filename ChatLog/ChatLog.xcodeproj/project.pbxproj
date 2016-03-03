@@ -15,6 +15,7 @@
 		38FDDF9E1C888C7400BB3187 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDF9D1C888C7400BB3187 /* MainViewController.swift */; };
 		38FDDFA11C888CFC00BB3187 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDFA01C888CFC00BB3187 /* CalendarViewController.swift */; };
 		38FDDFA31C888F1900BB3187 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDFA21C888F1900BB3187 /* ChatTableViewController.swift */; };
+		38FDDFA61C88915F00BB3187 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FDDFA51C88915F00BB3187 /* PlusButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		38FDDF9D1C888C7400BB3187 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = MainView/MainViewController.swift; sourceTree = "<group>"; };
 		38FDDFA01C888CFC00BB3187 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = MainView/CalendarViewController.swift; sourceTree = "<group>"; };
 		38FDDFA21C888F1900BB3187 /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatTableViewController.swift; path = MainView/ChatTableViewController.swift; sourceTree = "<group>"; };
+		38FDDFA51C88915F00BB3187 /* PlusButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlusButton.swift; path = MainView/PlusButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,10 +77,19 @@
 			children = (
 				38FDDF9B1C888BA400BB3187 /* MainViewCoordinator.swift */,
 				38FDDF9D1C888C7400BB3187 /* MainViewController.swift */,
-				38FDDFA01C888CFC00BB3187 /* CalendarViewController.swift */,
-				38FDDFA21C888F1900BB3187 /* ChatTableViewController.swift */,
+				38FDDFA41C88912200BB3187 /* SubViews */,
 			);
 			name = MainView;
+			sourceTree = "<group>";
+		};
+		38FDDFA41C88912200BB3187 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				38FDDFA01C888CFC00BB3187 /* CalendarViewController.swift */,
+				38FDDFA21C888F1900BB3187 /* ChatTableViewController.swift */,
+				38FDDFA51C88915F00BB3187 /* PlusButton.swift */,
+			);
+			name = SubViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +166,7 @@
 				38FDDF981C888A0600BB3187 /* AppCoordinator.swift in Sources */,
 				38FDDF9C1C888BA400BB3187 /* MainViewCoordinator.swift in Sources */,
 				38FDDF861C88899D00BB3187 /* AppDelegate.swift in Sources */,
+				38FDDFA61C88915F00BB3187 /* PlusButton.swift in Sources */,
 				38FDDF9E1C888C7400BB3187 /* MainViewController.swift in Sources */,
 				38FDDFA31C888F1900BB3187 /* ChatTableViewController.swift in Sources */,
 			);
