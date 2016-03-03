@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Discussion of the coordinator pattern and its benefits (primarily the reduction of UIViewController 
+// responsibilities) can be found here: http://khanlou.com/2015/10/coordinators-redux/
 protocol Coordinator {
   init(withNavigationController navigationController: UINavigationController)
   func start()
@@ -23,7 +25,10 @@ class AppCoordinator: NSObject, Coordinator {
   }
   
   func start() {
-    
+    let mainViewCoordinator = MainViewCoordinator(withNavigationController: self.navigationController)
+//    mainViewCoordinator.delegate = self
+    self.childCoordinators.append(mainViewCoordinator)
+    mainViewCoordinator.start()
   }
   
 }
