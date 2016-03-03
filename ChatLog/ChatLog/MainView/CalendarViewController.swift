@@ -10,15 +10,14 @@ import UIKit
 
 protocol CalendarViewControllerDelegate: class {
   func provideChatsForDate(date: NSDate) -> [Chat]
+  func dateTapped(date: NSDate)
 }
 
 class CalendarViewController: UIViewController {
   
   weak var delegate: CalendarViewControllerDelegate?
   
-  var selectedDate: NSDate {
-    return NSDate()
-  }
+  var selectedDate = NSDate()
   
   private lazy var dateStackView: UIStackView = {
     let stackView = UIStackView(frame: CGRectZero)
@@ -48,8 +47,16 @@ class CalendarViewController: UIViewController {
     
     for x in 0..<7 {
       let view = UIView()
+      view.tag = x
       view.translatesAutoresizingMaskIntoConstraints = false
-      if x == 0 {
+      
+      // construct the date
+      let components: NSDateComponents = NSDateComponents()
+      components.setValue(x, forComponent: NSCalendarUnit.Day);
+      let date: NSDate = NSDate()
+      let expirationDate = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: date, options: NSCalendarOptions(rawValue: 0))
+      
+      if NSCalendar.currentCalendar().isDate(expirationDate!, inSameDayAsDate: self.selectedDate) {
         view.backgroundColor = CLLightBlue
       } else {
         view.backgroundColor = CLWhite
@@ -59,12 +66,6 @@ class CalendarViewController: UIViewController {
       label.translatesAutoresizingMaskIntoConstraints = false
       view.addSubview(label)
       
-      // construct the date
-      let components: NSDateComponents = NSDateComponents()
-      components.setValue(x, forComponent: NSCalendarUnit.Day);
-      let date: NSDate = NSDate()
-      let expirationDate = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: date, options: NSCalendarOptions(rawValue: 0))
-      
       if let date = expirationDate, let chats = self.delegate?.provideChatsForDate(date) {
         label.text = "\(chats.count)"
       }
@@ -72,7 +73,22 @@ class CalendarViewController: UIViewController {
       label.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
       label.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
       self.dateStackView.addArrangedSubview(view)
+      
+      view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dateTapped:"))
     }
+  }
+  
+  func dateTapped(sender: UITapGestureRecognizer) {
+    guard let tappedView = sender.view else { return }
+    
+    // construct the date
+    let offset = tappedView.tag
+    let components: NSDateComponents = NSDateComponents()
+    components.setValue(offset, forComponent: NSCalendarUnit.Day);
+    let date: NSDate = NSDate()
+    self.selectedDate = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: date, options: NSCalendarOptions(rawValue: 0)) ?? NSDate()
+    
+    self.delegate?.dateTapped(self.selectedDate)
   }
   
 }

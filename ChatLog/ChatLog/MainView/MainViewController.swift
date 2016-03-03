@@ -93,6 +93,10 @@ extension MainViewController: CalendarViewControllerDelegate {
       fatalError("there is no delegate for the main view controller; this is not allowed")
     }
   }
+  
+  func dateTapped(date: NSDate) {
+    self.reloadChatData()
+  }
 }
 
 // Static, standalone functions for adding view constraints
