@@ -18,8 +18,13 @@ struct Chat {
   let title: String
   
   init(withTitle title: String, withDate date: NSDate = NSDate()) {
-    self.title = title
     self.date = date
+    
+    if title.characters.count > 0 {
+      self.title = title
+    } else {
+      self.title = "New Chat"
+    }
   }
 }
 

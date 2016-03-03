@@ -44,14 +44,26 @@
                                         <!--2016-03-03 18:12:28 +0000-->
                                     </date>
                                 </datePicker>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQC-sH-Nhp">
-                                    <rect key="frame" x="277" y="246" width="46" height="33"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <state key="normal" title="Done!"/>
-                                    <connections>
-                                        <action selector="doneTapped:" destination="-1" eventType="touchUpInside" id="xzq-XB-x3L"/>
-                                    </connections>
-                                </button>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="UD0-ik-J8V">
+                                    <rect key="frame" x="245" y="246" width="110" height="33"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKk-TM-uge">
+                                            <rect key="frame" x="0.0" y="0.0" width="48" height="33"/>
+                                            <state key="normal" title="Cancel"/>
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="-1" eventType="touchUpInside" id="aOL-rh-BXy"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQC-sH-Nhp">
+                                            <rect key="frame" x="64" y="0.0" width="46" height="33"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <state key="normal" title="Done!"/>
+                                            <connections>
+                                                <action selector="doneTapped:" destination="-1" eventType="touchUpInside" id="xzq-XB-x3L"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="hiM-PC-ocq" firstAttribute="width" secondItem="2s4-my-0se" secondAttribute="width" constant="-16" id="y0q-xv-IOh"/>

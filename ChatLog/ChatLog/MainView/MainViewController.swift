@@ -70,10 +70,16 @@ class MainViewController: UIViewController {
     
     // add the plus button constraints
     MainViewController.createConstraintsForPlusButton(self.plusButton, withParentViewController: self)
+    
+    // set up the initial displayed data
+    self.reloadChatData()
   }
   
   func reloadChatData() {
     self.calendarViewController.constructDates()
+    
+    let chats = self.delegate?.provideChatsForDate(self.calendarViewController.selectedDate)
+    self.chatTableViewController.chatsForDisplay = chats ?? [Chat]()
     self.chatTableViewController.tableView.reloadData()
   }
   

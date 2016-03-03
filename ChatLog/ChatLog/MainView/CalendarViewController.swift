@@ -16,6 +16,10 @@ class CalendarViewController: UIViewController {
   
   weak var delegate: CalendarViewControllerDelegate?
   
+  var selectedDate: NSDate {
+    return NSDate()
+  }
+  
   private lazy var dateStackView: UIStackView = {
     let stackView = UIStackView(frame: CGRectZero)
     stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,8 +39,6 @@ class CalendarViewController: UIViewController {
     self.dateStackView.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor).active = true
     self.dateStackView.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor).active = true
     self.dateStackView.bottomAnchor.constraintEqualToAnchor(self.view.bottomAnchor).active = true
-    
-    self.constructDates()
   }
   
   func constructDates() {
@@ -47,7 +49,7 @@ class CalendarViewController: UIViewController {
     for x in 0..<7 {
       let view = UIView()
       view.translatesAutoresizingMaskIntoConstraints = false
-      if x == 1 {
+      if x == 0 {
         view.backgroundColor = CLLightBlue
       } else {
         view.backgroundColor = CLWhite

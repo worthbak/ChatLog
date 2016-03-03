@@ -12,28 +12,19 @@ let ChatCellIdentifier = "chatCellID"
 
 class ChatTableViewController: UITableViewController {
   
+  var chatsForDisplay = [Chat]()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: ChatCellIdentifier)
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = false
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
   
   // MARK: - Table view data source
   
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // #warning Incomplete implementation, return the number of rows
-    return 3
+    return self.chatsForDisplay.count
   }
   
   
@@ -41,7 +32,8 @@ class ChatTableViewController: UITableViewController {
     let cell = tableView.dequeueReusableCellWithIdentifier(ChatCellIdentifier, forIndexPath: indexPath)
     
     // Configure the cell...
-    cell.textLabel?.text = "cell #\(indexPath.row)"
+    let chat = chatsForDisplay[indexPath.row]
+    cell.textLabel?.text = chat.title
     
     return cell
   }

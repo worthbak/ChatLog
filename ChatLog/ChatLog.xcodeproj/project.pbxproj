@@ -89,8 +89,8 @@
 			children = (
 				38FDDF9B1C888BA400BB3187 /* MainViewCoordinator.swift */,
 				38FDDF9D1C888C7400BB3187 /* MainViewController.swift */,
-				38FDDFB21C88B31500BB3187 /* NewChatViewController */,
 				38FDDFA41C88912200BB3187 /* SubViews */,
+				38FDDFB21C88B31500BB3187 /* NewChatViewController */,
 			);
 			name = MainView;
 			sourceTree = "<group>";
