@@ -10,9 +10,6 @@ import Foundation
 
 struct Chat {
   let date: NSDate
-  var score: Int {
-    return title.characters.count > 10 ? 5 : 1
-  }
   
   // more metadata can be added later
   let title: String
@@ -27,5 +24,3 @@ struct Chat {
     }
   }
 }
-
-// TODO: make a static func for "modifying" an immutable Chat struct
