@@ -22,6 +22,7 @@ class CalendarViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.view.backgroundColor = .whiteColor()
     
     // Do any additional setup after loading the view.
     self.dateStackView.topAnchor.constraintEqualToAnchor(self.view.topAnchor).active = true
@@ -32,7 +33,11 @@ class CalendarViewController: UIViewController {
     for x in 1...7 {
       let view = UIView()
       view.translatesAutoresizingMaskIntoConstraints = false
-      view.backgroundColor = .lightGrayColor()
+      if x == 1 {
+        view.backgroundColor = CLLightBlue
+      } else {
+        view.backgroundColor = CLWhite
+      }
       
       let label = UILabel()
       label.translatesAutoresizingMaskIntoConstraints = false

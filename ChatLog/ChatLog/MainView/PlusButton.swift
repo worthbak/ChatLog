@@ -10,7 +10,7 @@ import UIKit
 
 class PlusButton: UIButton {
   
-  var fillColor: UIColor = UIColor.greenColor()
+  var fillColor: UIColor = CLPink
   
   override func drawRect(rect: CGRect) {
     // make the circile

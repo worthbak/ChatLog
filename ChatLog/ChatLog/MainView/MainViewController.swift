@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Constants
 let CalendarViewHeight: CGFloat = 80
 let PlusButtonDimension: CGFloat = 60
 
@@ -43,6 +44,15 @@ class MainViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.navigationItem.title = "ChatLog"
+    
+    // Set navBar appearance
+    self.navigationController?.navigationBar.barTintColor = CLBlue
+    self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
+    self.navigationController?.navigationBar.titleTextAttributes = [
+      NSForegroundColorAttributeName : CLWhite,
+      NSFontAttributeName : UIFont.systemFontOfSize(20)
+    ]
     
     // add constraints for the child view controllers
     MainViewController.createConstraintsForCalendarViewController(self.calendarViewController, withParentViewController: self)
