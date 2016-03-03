@@ -19,13 +19,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a New Chat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWE-BP-Thq">
-                    <rect key="frame" x="8" y="16" width="584" height="24"/>
+                    <rect key="frame" x="8" y="24" width="584" height="24"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CH5-ct-Gg1">
-                    <rect key="frame" x="0.0" y="48" width="600" height="552"/>
+                    <rect key="frame" x="0.0" y="56" width="600" height="544"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2s4-my-0se">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="279"/>
@@ -86,7 +86,7 @@
                 <constraint firstItem="2s4-my-0se" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="MJZ-zm-CHR"/>
                 <constraint firstAttribute="trailingMargin" secondItem="ZWE-BP-Thq" secondAttribute="trailing" id="MaX-ny-bMr"/>
                 <constraint firstItem="CH5-ct-Gg1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="b8X-Kj-F7C"/>
-                <constraint firstItem="ZWE-BP-Thq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="oDK-Hc-TcP"/>
+                <constraint firstItem="ZWE-BP-Thq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="24" id="oDK-Hc-TcP"/>
                 <constraint firstAttribute="trailing" secondItem="2s4-my-0se" secondAttribute="trailing" id="q4d-0V-UgM"/>
                 <constraint firstItem="CH5-ct-Gg1" firstAttribute="top" secondItem="ZWE-BP-Thq" secondAttribute="bottom" constant="8" id="qoB-oG-fP6"/>
                 <constraint firstAttribute="trailing" secondItem="CH5-ct-Gg1" secondAttribute="trailing" id="uBF-oX-b9p"/>

@@ -22,24 +22,18 @@ class MainViewController: UIViewController {
   
   weak var delegate: MainViewControllerDelegate?
   
-  // MARK: Lazy-loaded UI Elements
+  // MARK: Lazily-loaded UI Elements
   private lazy var calendarViewController: CalendarViewController = {
     let dateVC = CalendarViewController()
     dateVC.delegate = self
-    dateVC.view.translatesAutoresizingMaskIntoConstraints = false
-    self.addChildViewController(dateVC)
-    self.view.addSubview(dateVC.view)
-    dateVC.didMoveToParentViewController(self)
+    self.setUpChildViewController(dateVC)
     
     return dateVC
   }()
   
   private lazy var chatTableViewController: ChatTableViewController = {
     let chatVC = ChatTableViewController()
-    chatVC.view.translatesAutoresizingMaskIntoConstraints = false
-    self.addChildViewController(chatVC)
-    self.view.addSubview(chatVC.view)
-    chatVC.didMoveToParentViewController(self)
+    self.setUpChildViewController(chatVC)
     
     return chatVC
   }()
@@ -49,6 +43,7 @@ class MainViewController: UIViewController {
     button.translatesAutoresizingMaskIntoConstraints = false
     self.view.addSubview(button)
     
+    // customize the button's tap action to call our delegate method
     button.tapActionClosure = { [unowned self] _ in self.delegate?.newChatButtonTappedWithDate(self.calendarViewController.selectedDate) }
     
     return button
@@ -74,7 +69,7 @@ class MainViewController: UIViewController {
     // add the plus button constraints
     MainViewController.createConstraintsForPlusButton(self.plusButton, withParentViewController: self)
     
-    // set up the initial displayed data
+    // load the initial displayed data
     self.reloadChatData()
   }
   
@@ -94,6 +89,13 @@ class MainViewController: UIViewController {
     let chats = self.delegate?.provideChatsForDate(self.calendarViewController.selectedDate)
     self.chatTableViewController.chatsForDisplay = chats ?? [Chat]()
     self.chatTableViewController.tableView.reloadData()
+  }
+  
+  private func setUpChildViewController(childVC: UIViewController) {
+    childVC.view.translatesAutoresizingMaskIntoConstraints = false
+    self.addChildViewController(childVC)
+    self.view.addSubview(childVC.view)
+    childVC.didMoveToParentViewController(self)
   }
 }
 
