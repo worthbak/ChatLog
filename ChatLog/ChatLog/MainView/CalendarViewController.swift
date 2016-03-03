@@ -15,8 +15,10 @@ protocol CalendarViewControllerDelegate: class {
 
 class CalendarViewController: UIViewController {
   
+  // MARK: Instance Variables
   weak var delegate: CalendarViewControllerDelegate?
   
+  /// Represents the currently selected date; setting this value has no side effects.
   var selectedDate = NSDate()
   
   private lazy var dateStackView: UIStackView = {
@@ -29,49 +31,53 @@ class CalendarViewController: UIViewController {
     return stackView
   }()
   
+  // MARK: View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = .whiteColor()
     
-    // Do any additional setup after loading the view.
+    // Prepare the layout for the dateStackView
     self.dateStackView.topAnchor.constraintEqualToAnchor(self.view.topAnchor).active = true
     self.dateStackView.leadingAnchor.constraintEqualToAnchor(self.view.leadingAnchor).active = true
     self.dateStackView.trailingAnchor.constraintEqualToAnchor(self.view.trailingAnchor).active = true
     self.dateStackView.bottomAnchor.constraintEqualToAnchor(self.view.bottomAnchor).active = true
   }
   
+  // MARK: Public Methods
+  /// This method destroys and rebuilds the calendar view, based on the latest available data.
   func constructDates() {
     for view in self.dateStackView.arrangedSubviews {
       self.dateStackView.removeArrangedSubview(view)
     }
     
     for x in 0..<7 {
+      // Construct the subviews and add them to the stack
       let view = UIView()
-      view.tag = x
+      view.tag = x // we use the tag as a quick/simple way to keep track of the represented day of the week
       view.translatesAutoresizingMaskIntoConstraints = false
-      
-      // construct the date
-      let currentDate = self.constructDateWithOffsetFromCurrentDate(x)
-      
-      if NSCalendar.currentCalendar().isDate(currentDate, inSameDayAsDate: self.selectedDate) {
-        view.backgroundColor = CLLightBlue
-      } else {
-        view.backgroundColor = CLWhite
-      }
+      view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dateTapped:"))
       
       let label = UILabel()
       label.translatesAutoresizingMaskIntoConstraints = false
       view.addSubview(label)
       
-      if let chats = self.delegate?.provideChatsForDate(currentDate) {
-        label.text = "\(chats.count)"
-      }
-      
       label.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
       label.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
       self.dateStackView.addArrangedSubview(view)
       
-      view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dateTapped:"))
+      // construct the date and customize the view
+      let currentDate = self.constructDateWithOffsetFromCurrentDate(view.tag)
+      
+      if NSCalendar.currentCalendar().isDate(currentDate, inSameDayAsDate: self.selectedDate) {
+        view.backgroundColor = CLLightBlue
+        label.textColor = .whiteColor()
+      } else {
+        view.backgroundColor = CLWhite
+      }
+      
+      if let chats = self.delegate?.provideChatsForDate(currentDate) {
+        label.text = "\(chats.count)"
+      }
     }
   }
   
@@ -85,6 +91,7 @@ class CalendarViewController: UIViewController {
     self.delegate?.dateTapped(self.selectedDate)
   }
   
+  // MARK: Private Methods
   private func constructDateWithOffsetFromCurrentDate(offset: Int) -> NSDate {
     let components: NSDateComponents = NSDateComponents()
     components.setValue(offset, forComponent: NSCalendarUnit.Day);

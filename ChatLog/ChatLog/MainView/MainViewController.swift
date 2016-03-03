@@ -78,6 +78,15 @@ class MainViewController: UIViewController {
     self.reloadChatData()
   }
   
+  /// Sets the currently selected date and reloads all chat data
+  func setSelectedDate(date: NSDate, andReloadData reload: Bool = true) {
+    self.calendarViewController.selectedDate = date
+    
+    if reload {
+      self.reloadChatData()
+    }
+  }
+  
   /// Reloads/resets the data in both the calendar view and chat table view.
   func reloadChatData() {
     self.calendarViewController.constructDates()
@@ -86,7 +95,6 @@ class MainViewController: UIViewController {
     self.chatTableViewController.chatsForDisplay = chats ?? [Chat]()
     self.chatTableViewController.tableView.reloadData()
   }
-  
 }
 
 // MARK: - CalendarViewControllerDelegate

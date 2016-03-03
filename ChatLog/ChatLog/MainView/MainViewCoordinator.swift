@@ -51,7 +51,7 @@ extension MainViewCoordinator: NewChatViewControllerDelegate {
     self.navigationController.dismissViewControllerAnimated(true, completion: nil)
     self.chatDataController.addNewChat(chat)
     if let mainVC = navigationController.viewControllers.last as? MainViewController {
-      mainVC.reloadChatData()
+      mainVC.setSelectedDate(chat.date)
     }
     
   }

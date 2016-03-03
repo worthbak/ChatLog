@@ -10,6 +10,7 @@ import UIKit
 
 let ChatCellIdentifier = "chatCellID"
 
+/// An exceedingly simple table view for displaying the chats from a specified date (defined and provided elsewhere).
 class ChatTableViewController: UITableViewController {
   
   var chatsForDisplay = [Chat]()

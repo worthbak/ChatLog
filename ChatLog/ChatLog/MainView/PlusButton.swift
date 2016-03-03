@@ -15,7 +15,7 @@ class PlusButton: UIButton {
   var tapActionClosure: ((UITapGestureRecognizer) -> Void)?
   
   override func drawRect(rect: CGRect) {
-    // make the circile
+    // make the circle
     let path = UIBezierPath(ovalInRect: rect)
     self.fillColor.setFill()
     path.fill()
