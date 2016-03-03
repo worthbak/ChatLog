@@ -1,6 +1,8 @@
 # ChatLog
 An app for collecting conversations. 
 
+Please [click here](https://www.dropbox.com/s/nocrdiyu0osq80a/ChatLog-WalkthroughVideo.mov?dl=0) for a walkthrough of the app.
+
 ## Purpose
 This project serves two purposes: the first is, of course, the functionality of the app itself, described below. The second is for the author to demonstrate his expertise in iOS development by producing quality work under a specified amount of time (1/2 of a day). The project began just before 8am on Thursday, March 3rd, and will be completed and sent to relevant parties before 1pm on the same day. 
 
@@ -10,7 +12,7 @@ In a sentence, ChatLog is an app designed to give users an easy way to record, q
 Conversations, once added, are given a score based on a number of simple metrics, and each day has a total score, which is the sum of each individual conversation score from that day. All of this data is quickly observable from the primary view. 
 
 ## Potential Functionality
-Time constraints will dictate further functionality, which may include: 
+The app will be designed such that new funcionality could be included easily, given more time. This functionality could include: 
 
 - Tagging conversations to a location with Foursquare API integration
 - Viewing all conversations across time on a map
