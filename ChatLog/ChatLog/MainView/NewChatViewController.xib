@@ -8,9 +8,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewChatViewController" customModule="ChatLog" customModuleProvider="target">
             <connections>
+                <outlet property="attractedSwitch" destination="Idq-8y-BiU" id="gvL-4f-c0c"/>
                 <outlet property="datePicker" destination="5zM-Co-d4e" id="4sP-bR-v1l"/>
+                <outlet property="didAskOutControl" destination="Oca-mD-wxm" id="dES-DN-s0a"/>
                 <outlet property="titleTextField" destination="hiM-PC-ocq" id="QDt-hB-UQu"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Pk0-de-yG9"/>
+                <outlet property="wouldDateControl" destination="nFe-EP-edi" id="ybw-Ns-SeW"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

@@ -10,9 +10,30 @@ import Foundation
 
 struct Chat {
   let date: NSDate
-  
-  // more metadata can be added later
   let title: String
+  
+  // scoring metadata
+  var attracted = false
+  var wouldDate = false
+  var didAskOut = false
+  
+  var score: Int {
+    var calculatedScore = 1
+    
+    if wouldDate {
+      calculatedScore += 1
+    }
+    
+    if attracted {
+      calculatedScore += 2
+    }
+    
+    if didAskOut {
+      calculatedScore += 3
+    }
+    
+    return calculatedScore >= 4 ? 4 : calculatedScore
+  }
   
   init(withTitle title: String, withDate date: NSDate = NSDate()) {
     self.date = date

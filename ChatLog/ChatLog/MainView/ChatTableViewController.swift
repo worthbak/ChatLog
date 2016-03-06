@@ -34,7 +34,7 @@ class ChatTableViewController: UITableViewController {
     
     // Configure the cell...
     let chat = chatsForDisplay[indexPath.row]
-    cell.textLabel?.text = chat.title
+    cell.textLabel?.text = "\(chat.title), \(chat.score) points"
     
     return cell
   }

@@ -19,12 +19,19 @@ class NewChatViewController: UIViewController {
   @IBOutlet weak var titleTextField: UITextField!
   @IBOutlet weak var datePicker: UIDatePicker!
   
+  @IBOutlet weak var attractedSwitch: UISegmentedControl!
+  @IBOutlet weak var wouldDateControl: UISegmentedControl!
+  @IBOutlet weak var didAskOutControl: UISegmentedControl!
+  
   override func viewDidAppear(animated: Bool) {
     self.titleTextField.becomeFirstResponder()
   }
   
   @IBAction func doneTapped(sender: AnyObject) {
-    let newChat = Chat(withTitle: self.titleTextField.text ?? "New Chat", withDate: self.datePicker.date)
+    var newChat = Chat(withTitle: self.titleTextField.text ?? "New Chat", withDate: self.datePicker.date)
+    newChat.attracted = self.attractedSwitch.selectedSegmentIndex == 0
+    newChat.wouldDate = self.wouldDateControl.selectedSegmentIndex == 0
+    newChat.didAskOut = self.didAskOutControl.selectedSegmentIndex == 0
 
     self.delegate?.newChatCreated(newChat)
   }
