@@ -58,6 +58,8 @@ class CalendarViewController: UIViewController {
       view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dateTapped:"))
       
       let label = UILabel()
+      label.textAlignment = .Center
+      label.numberOfLines = 2
       label.translatesAutoresizingMaskIntoConstraints = false
       view.addSubview(label)
       
@@ -67,6 +69,7 @@ class CalendarViewController: UIViewController {
       
       // construct the date and customize the view
       let currentDate = self.constructDateWithOffsetFromCurrentDate(view.tag)
+      let shortDateString = self.createShortFormattedDateString(currentDate)
       
       if NSCalendar.currentCalendar().isDate(currentDate, inSameDayAsDate: self.selectedDate) {
         view.backgroundColor = CLLightBlue
@@ -76,7 +79,7 @@ class CalendarViewController: UIViewController {
       }
       
       if let chats = self.delegate?.provideChatsForDate(currentDate) {
-        label.text = "\(chats.count)"
+        label.text = "\(chats.count)\n\(shortDateString)"
       }
     }
   }
@@ -101,6 +104,14 @@ class CalendarViewController: UIViewController {
     } else {
       fatalError("failed to construct date for comparison")
     }
+  }
+  
+  private func createShortFormattedDateString(date: NSDate) -> String {
+    let formatter = NSDateFormatter()
+    formatter.timeStyle = .NoStyle
+    formatter.dateFormat = "E"
+    
+    return formatter.stringFromDate(date)
   }
   
 }
