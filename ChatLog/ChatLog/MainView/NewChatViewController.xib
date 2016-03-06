@@ -27,25 +27,109 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CH5-ct-Gg1">
                     <rect key="frame" x="0.0" y="56" width="600" height="544"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2s4-my-0se">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="279"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2s4-my-0se">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="553"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a title!" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hiM-PC-ocq">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the person's name!" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hiM-PC-ocq">
                                     <rect key="frame" x="8" y="0.0" width="584" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" spellCheckingType="no" returnKeyType="done"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" spellCheckingType="no" returnKeyType="next"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="8Ch-yD-hHO"/>
                                     </connections>
                                 </textField>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VwR-sG-tYV">
+                                    <rect key="frame" x="8" y="38" width="584" height="100"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Were you attracted to this person?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1r-pv-ETw">
+                                            <rect key="frame" x="8" y="8" width="568" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="Idq-8y-BiU">
+                                            <rect key="frame" x="255.5" y="64" width="73" height="29"/>
+                                            <segments>
+                                                <segment title="Yes"/>
+                                                <segment title="No"/>
+                                            </segments>
+                                        </segmentedControl>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="100" id="7Cl-1g-34i"/>
+                                        <constraint firstItem="Z1r-pv-ETw" firstAttribute="leading" secondItem="VwR-sG-tYV" secondAttribute="leadingMargin" id="TcC-Wv-1oi"/>
+                                        <constraint firstItem="Idq-8y-BiU" firstAttribute="centerX" secondItem="VwR-sG-tYV" secondAttribute="centerX" id="a7C-6w-Gz7"/>
+                                        <constraint firstItem="Z1r-pv-ETw" firstAttribute="top" secondItem="VwR-sG-tYV" secondAttribute="topMargin" id="sPR-7W-ndb"/>
+                                        <constraint firstAttribute="bottom" secondItem="Idq-8y-BiU" secondAttribute="bottom" constant="8" id="vrq-pL-FKC"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Z1r-pv-ETw" secondAttribute="trailing" id="zg6-rb-AaX"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5e4-1d-DDP">
+                                    <rect key="frame" x="8" y="146" width="584" height="100"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you consider dating this person? " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmm-Gv-Zt1">
+                                            <rect key="frame" x="8" y="8" width="568" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="nFe-EP-edi">
+                                            <rect key="frame" x="255.5" y="64" width="73" height="29"/>
+                                            <segments>
+                                                <segment title="Yes"/>
+                                                <segment title="No"/>
+                                            </segments>
+                                        </segmentedControl>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="xmm-Gv-Zt1" secondAttribute="trailing" id="1o1-MB-xDX"/>
+                                        <constraint firstItem="xmm-Gv-Zt1" firstAttribute="top" secondItem="5e4-1d-DDP" secondAttribute="topMargin" id="2Vg-iM-292"/>
+                                        <constraint firstAttribute="bottom" secondItem="nFe-EP-edi" secondAttribute="bottom" constant="8" id="B6J-kq-MZs"/>
+                                        <constraint firstItem="xmm-Gv-Zt1" firstAttribute="leading" secondItem="5e4-1d-DDP" secondAttribute="leadingMargin" id="iaV-YL-j6r"/>
+                                        <constraint firstAttribute="height" constant="100" id="tYQ-CZ-Ruj"/>
+                                        <constraint firstItem="nFe-EP-edi" firstAttribute="centerX" secondItem="5e4-1d-DDP" secondAttribute="centerX" id="utB-D6-RH7"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="019-X9-4ZN">
+                                    <rect key="frame" x="8" y="254" width="584" height="100"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did you ask this person out? " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bix-OJ-eSZ">
+                                            <rect key="frame" x="8" y="8" width="568" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="Oca-mD-wxm">
+                                            <rect key="frame" x="255.5" y="64" width="73" height="29"/>
+                                            <segments>
+                                                <segment title="Yes"/>
+                                                <segment title="No"/>
+                                            </segments>
+                                        </segmentedControl>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="Bix-OJ-eSZ" firstAttribute="top" secondItem="019-X9-4ZN" secondAttribute="topMargin" id="Frt-HV-Glg"/>
+                                        <constraint firstAttribute="bottom" secondItem="Oca-mD-wxm" secondAttribute="bottom" constant="8" id="Kjd-b5-LzM"/>
+                                        <constraint firstItem="Bix-OJ-eSZ" firstAttribute="leading" secondItem="019-X9-4ZN" secondAttribute="leadingMargin" id="Q2A-Uk-5Cf"/>
+                                        <constraint firstAttribute="height" constant="100" id="qqJ-0Q-Cv2"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Bix-OJ-eSZ" secondAttribute="trailing" id="vYH-gs-SQM"/>
+                                        <constraint firstItem="Oca-mD-wxm" firstAttribute="centerX" secondItem="019-X9-4ZN" secondAttribute="centerX" id="y0R-fM-RJ1"/>
+                                    </constraints>
+                                </view>
                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="5zM-Co-d4e">
-                                    <rect key="frame" x="140" y="30" width="320" height="216"/>
+                                    <rect key="frame" x="140" y="362" width="320" height="150"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="150" id="GzP-Gl-7FQ"/>
+                                    </constraints>
                                     <date key="date" timeIntervalSinceReferenceDate="478721548.575535">
                                         <!--2016-03-03 18:12:28 +0000-->
                                     </date>
                                 </datePicker>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="UD0-ik-J8V">
-                                    <rect key="frame" x="245" y="246" width="110" height="33"/>
+                                    <rect key="frame" x="245" y="520" width="110" height="33"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKk-TM-uge">
                                             <rect key="frame" x="0.0" y="0.0" width="48" height="33"/>
@@ -66,6 +150,9 @@
                                 </stackView>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="VwR-sG-tYV" firstAttribute="width" secondItem="2s4-my-0se" secondAttribute="width" constant="-16" id="9CP-bR-Gy0"/>
+                                <constraint firstItem="5e4-1d-DDP" firstAttribute="width" secondItem="2s4-my-0se" secondAttribute="width" constant="-16" id="ISZ-Hy-Xqg"/>
+                                <constraint firstItem="019-X9-4ZN" firstAttribute="width" secondItem="2s4-my-0se" secondAttribute="width" constant="-16" id="sth-Vq-6UH"/>
                                 <constraint firstItem="hiM-PC-ocq" firstAttribute="width" secondItem="2s4-my-0se" secondAttribute="width" constant="-16" id="y0q-xv-IOh"/>
                             </constraints>
                         </stackView>

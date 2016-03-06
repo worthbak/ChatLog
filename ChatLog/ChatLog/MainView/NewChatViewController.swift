@@ -41,3 +41,14 @@ extension NewChatViewController: UITextFieldDelegate {
     return true
   }
 }
+
+/*
+Rules
+
+1pt if you're not attracted to the person
+2pts if you'd consider going on a date with this person
+3pts if you're actively attracted to this person 
+4pts if you actually ask this person out
+
+4pts max per day
+*/
